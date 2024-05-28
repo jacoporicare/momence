@@ -25,12 +25,13 @@ export async function getRates(): Promise<Rate[]> {
 
 export function parseRates(data: string): Rate[] {
   return data
+    .trim()
     .split(ROW_DELIMITER)
     .slice(HEADER_ROWS_COUNT)
-    .map<Rate>(parseRateRow);
+    .map<Rate>(parseRate);
 }
 
-export function parseRateRow(row: string): Rate {
+export function parseRate(row: string): Rate {
   // Australia|dollar|1|AUD|15.150
   const cols = row.split(COLUMN_DELIMITER);
 

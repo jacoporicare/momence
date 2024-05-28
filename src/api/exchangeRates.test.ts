@@ -1,9 +1,9 @@
-import { parseRateRow, parseRates } from './exchangeRates';
+import { parseRate, parseRates } from './exchangeRates';
 
-test('parses rate row', () => {
+test('parses rate', () => {
   const data = 'Australia|dollar|1|AUD|15.150';
 
-  const parsedRow = parseRateRow(data);
+  const parsedRow = parseRate(data);
 
   expect(parsedRow).toEqual({
     country: 'Australia',
@@ -14,18 +14,18 @@ test('parses rate row', () => {
   });
 });
 
-test('fails to parse rate row with invalid delimiter', () => {
+test('fails to parse rate with invalid delimiter', () => {
   const data = 'Australia;dollar;1;AUD;15.150';
 
-  const parseFn = () => parseRateRow(data);
+  const parseFn = () => parseRate(data);
 
   expect(parseFn).toThrow();
 });
 
-test('fails to parse rate row with invalid number of columns', () => {
+test('fails to parse rate with invalid number of columns', () => {
   const data = 'Australia|dollar|1|AUD';
 
-  const parseFn = () => parseRateRow(data);
+  const parseFn = () => parseRate(data);
 
   expect(parseFn).toThrow();
 });
