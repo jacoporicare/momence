@@ -17,5 +17,8 @@ declare module 'styled-components' {
       headerBackgroundColor: string;
       altRowBackgroundColor: string;
     };
+    form: {
+      borderColor: string;
+    };
   }
 }

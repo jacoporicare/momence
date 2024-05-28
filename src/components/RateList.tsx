@@ -6,7 +6,7 @@ import {
   TableHeaderCell,
   TableHeaderRow,
   TableRow,
-} from './common/Table';
+} from './common';
 
 type Props = {
   rates: Rate[];

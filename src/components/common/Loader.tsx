@@ -9,7 +9,7 @@ const spin = keyframes`
   }
 `;
 
-const Loader = styled.div`
+export const Loader = styled.div`
   border: 10px solid ${(props) => props.theme.loader.backgroundColor};
   border-top: 10px solid ${(props) => props.theme.loader.mainColor};
   border-radius: 50%;
@@ -18,5 +18,3 @@ const Loader = styled.div`
   animation: ${spin} 1s linear infinite;
   margin: 4em auto;
 `;
-
-export default Loader;

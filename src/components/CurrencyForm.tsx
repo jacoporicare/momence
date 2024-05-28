@@ -1,46 +1,14 @@
 import { useMemo, useState } from 'react';
-import styled from 'styled-components';
 
 import { Rate } from '../api/exchangeRates';
 import useNumericInputState from '../hooks/useNumericInputState';
 import { convertCurrency } from '../lib/convertCurrency';
 
+import { Arrow, Form, Input, InputWrapper, Select } from './common';
+
 type Props = {
   rates: Rate[];
 };
-
-const Form = styled.div`
-  display: flex;
-  margin-bottom: 2rem;
-`;
-
-const InputWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  position: relative;
-  padding-right: 0.5em;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  border: none;
-  margin-right: 0.5rem;
-  padding: 0.5em;
-`;
-
-const Arrow = styled.div`
-  flex: 0;
-  margin: 0 0.5rem;
-  font-size: 1.75em;
-`;
-
-const Select = styled.select`
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 0.5em;
-`;
 
 export default function CurrencyForm(props: Props) {
   const ratesMap = useMemo(

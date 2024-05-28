@@ -17,7 +17,7 @@ const Header = styled.h2`
   margin-top: 0;
 `;
 
-export default function Error(props: Props) {
+export function Error(props: Props) {
   return (
     <Alert>
       {props.title && <Header>{props.title}</Header>}

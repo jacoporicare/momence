@@ -14,6 +14,9 @@ const theme: DefaultTheme = {
     headerBackgroundColor: '#f2f2f2',
     altRowBackgroundColor: '#f9f9f9',
   },
+  form: {
+    borderColor: '#ccc',
+  },
 };
 
 export default theme;

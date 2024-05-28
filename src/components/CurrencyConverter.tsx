@@ -1,18 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import styled from 'styled-components';
 
 import { getRates } from '../api/exchangeRates';
 
-import Error from './common/Error';
-import Loader from './common/Loader';
+import { Container, Error, Loader } from './common';
 import CurrencyForm from './CurrencyForm';
 import RateList from './RateList';
-
-const Container = styled.div`
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 1em;
-`;
 
 export default function CurrencyConverter() {
   const { data, isLoading, isError } = useQuery({

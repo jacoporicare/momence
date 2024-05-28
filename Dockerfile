@@ -3,7 +3,9 @@ FROM node:20-alpine as builder
 WORKDIR /srv
 RUN corepack enable
 COPY . .
+ENV CI=true
 RUN yarn install
+RUN yarn test
 RUN yarn build
 
 
