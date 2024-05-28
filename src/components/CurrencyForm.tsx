@@ -58,9 +58,9 @@ export default function CurrencyForm(props: Props) {
 
   const selectedCurrency = ratesMap.get(currencyCode);
   const convertedAmount =
-    parsedValue && selectedCurrency
+    !Number.isNaN(parsedValue) && selectedCurrency
       ? convertCurrency(
-          Number(parsedValue),
+          parsedValue,
           selectedCurrency.rate,
           selectedCurrency.amount
         )
