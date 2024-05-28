@@ -6,11 +6,10 @@ type Props = {
   children: ReactNode;
 };
 
-// TODO: theming
 const Alert = styled.div`
-  background-color: #ffaaaa;
+  background-color: ${(props) => props.theme.error.backgroundColor};
   padding: 1em;
-  border: 1px solid #900000;
+  border: 1px solid ${(props) => props.theme.error.borderColor};
   border-radius: 4px;
 `;
 

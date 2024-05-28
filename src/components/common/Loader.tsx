@@ -9,10 +9,9 @@ const spin = keyframes`
   }
 `;
 
-// TODO: theming
 const Loader = styled.div`
-  border: 10px solid #f3f3f3;
-  border-top: 10px solid #3498db;
+  border: 10px solid ${(props) => props.theme.loader.backgroundColor};
+  border-top: 10px solid ${(props) => props.theme.loader.mainColor};
   border-radius: 50%;
   width: 80px;
   height: 80px;
