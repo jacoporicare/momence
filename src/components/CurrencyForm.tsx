@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import { Rate } from '../api/exchangeRates';
+import useNumericInputState from '../hooks/useNumericInputState';
 import { convertCurrency } from '../lib/convertCurrency';
 
 type Props = {
@@ -18,15 +19,21 @@ const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   border: 1px solid #ccc;
-  padding: 0.5em;
-  margin-right: 0.5rem;
   position: relative;
+  padding-right: 0.5em;
 `;
 
 const Input = styled.input`
   flex: 1;
   border: none;
   margin-right: 0.5rem;
+  padding: 0.5em;
+`;
+
+const Arrow = styled.div`
+  flex: 0;
+  margin: 0 0.5rem;
+  font-size: 1.75em;
 `;
 
 const Select = styled.select`
@@ -45,14 +52,15 @@ export default function CurrencyForm(props: Props) {
     props.rates
   );
 
-  const [amount, setAmount] = useState('');
   const [currencyCode, setCurrencyCode] = useState('');
+
+  const { value, parsedValue, onChange, onBlur } = useNumericInputState();
 
   const selectedCurrency = ratesMap.get(currencyCode);
   const convertedAmount =
-    amount && selectedCurrency
+    parsedValue && selectedCurrency
       ? convertCurrency(
-          Number(amount),
+          Number(parsedValue),
           selectedCurrency.rate,
           selectedCurrency.amount
         )
@@ -63,13 +71,15 @@ export default function CurrencyForm(props: Props) {
       <Form>
         <InputWrapper>
           <Input
-            type="number"
-            placeholder="Amount in CZK"
-            value={amount}
-            onChange={(e) => setAmount(e.currentTarget.value)}
+            type="text"
+            placeholder="Amount"
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
           />
           CZK
         </InputWrapper>
+        <Arrow>▶</Arrow>
         <Select
           value={currencyCode}
           onChange={(e) => setCurrencyCode(e.currentTarget.value)}
@@ -87,7 +97,7 @@ export default function CurrencyForm(props: Props) {
         Result:{' '}
         {convertedAmount !== undefined ? (
           <>
-            {convertedAmount} {currencyCode}
+            {convertedAmount.toLocaleString('en-US')} {currencyCode}
           </>
         ) : (
           <>enter a valid number and select a currency</>
