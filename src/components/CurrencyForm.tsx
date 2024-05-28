@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import styled from 'styled-components';
 
 import { Rate } from '../api/exchangeRates';
 import useNumericInputState from '../hooks/useNumericInputState';
@@ -9,6 +10,21 @@ import { Arrow, Form, Input, InputWrapper, Select } from './common';
 type Props = {
   rates: Rate[];
 };
+
+const Result = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const ResultInput = styled.div`
+  color: ${(props) => props.theme.dimmedTextColor};
+  font-weight: 600;
+`;
+
+const ResultValue = styled.div`
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-top: 0.5rem;
+`;
 
 export default function CurrencyForm(props: Props) {
   const ratesMap = useMemo(
@@ -61,16 +77,14 @@ export default function CurrencyForm(props: Props) {
         </Select>
       </Form>
 
-      <h3>
-        Result:{' '}
-        {convertedAmount !== undefined ? (
-          <>
+      {convertedAmount !== undefined && (
+        <Result>
+          <ResultInput>{parsedValue.toLocaleString('en-US')} CZK =</ResultInput>
+          <ResultValue>
             {convertedAmount.toLocaleString('en-US')} {currencyCode}
-          </>
-        ) : (
-          <>enter a valid number and select a currency</>
-        )}
-      </h3>
+          </ResultValue>
+        </Result>
+      )}
     </>
   );
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Form = styled.div`
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const InputWrapper = styled.div`

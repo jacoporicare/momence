@@ -4,6 +4,7 @@ import 'styled-components';
 // and extend them!
 declare module 'styled-components' {
   export interface DefaultTheme {
+    dimmedTextColor: string;
     loader: {
       mainColor: string;
       backgroundColor: string;

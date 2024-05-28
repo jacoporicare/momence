@@ -1,6 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
+  dimmedTextColor: '#999',
   loader: {
     mainColor: '#3498db',
     backgroundColor: '#f3f3f3',
