@@ -49,7 +49,7 @@ export default function CurrencyForm(props: Props) {
         (map, rate) => map.set(rate.code, rate),
         new Map()
       ),
-    props.rates
+    [props.rates]
   );
 
   const [currencyCode, setCurrencyCode] = useState('');
