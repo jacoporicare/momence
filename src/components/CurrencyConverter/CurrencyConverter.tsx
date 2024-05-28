@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { getRates } from '../../api/exchangeRates';
-import Error from '../Error';
-import Loader from '../Loader';
+import Error from '../common/Error';
+import Loader from '../common/Loader';
 
-import Container from './Container';
+import Container from '../common/Container';
 import RateList from '../RateList/RateList';
 
 export default function CurrencyConverter() {
