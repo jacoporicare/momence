@@ -5,7 +5,7 @@ import Error from '../Error';
 import Loader from '../Loader';
 
 import Container from './Container';
-import RateList from './RateList';
+import RateList from '../RateList/RateList';
 
 export default function CurrencyConverter() {
   const { data, isLoading, isError } = useQuery({
