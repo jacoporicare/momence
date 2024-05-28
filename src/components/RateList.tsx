@@ -1,4 +1,4 @@
-import { Rate } from '../../api/exchangeRates';
+import { Rate } from '../api/exchangeRates';
 
 import {
   Table,
@@ -6,7 +6,7 @@ import {
   TableHeaderCell,
   TableHeaderRow,
   TableRow,
-} from '../common/Table';
+} from './common/Table';
 
 type Props = {
   rates: Rate[];

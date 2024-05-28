@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import CurrencyConverter from './CurrencyConverter/CurrencyConverter';
+import CurrencyConverter from './CurrencyConverter';
 
 const queryClient = new QueryClient();
 

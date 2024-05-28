@@ -1,11 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
+import styled from 'styled-components';
 
-import { getRates } from '../../api/exchangeRates';
-import Error from '../common/Error';
-import Loader from '../common/Loader';
+import { getRates } from '../api/exchangeRates';
 
-import Container from '../common/Container';
-import RateList from '../RateList/RateList';
+import Error from './common/Error';
+import Loader from './common/Loader';
+import CurrencyForm from './CurrencyForm';
+import RateList from './RateList';
+
+const Container = styled.div`
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1em;
+`;
 
 export default function CurrencyConverter() {
   const { data, isLoading, isError } = useQuery({
@@ -24,7 +31,12 @@ export default function CurrencyConverter() {
             try again later.
           </Error>
         )}
-        {data && <RateList rates={data} />}
+        {data && (
+          <>
+            <CurrencyForm rates={data} />
+            <RateList rates={data} />
+          </>
+        )}
       </main>
     </Container>
   );
